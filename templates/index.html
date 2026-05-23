@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Risk Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>🩺 Diabetes Risk Prediction</h1>
+    <p class="subtitle">Check your diabetes risk using key health factors</p>
+
+    <form method="POST">
+        <div class="grid">
+            <div>
+                <label>BMI (15–50)</label>
+                <input type="number" step="0.1" name="BMI" required>
+            </div>
+
+            <div>
+                <label>Age (years)</label>
+                <input type="number" name="Age" required>
+            </div>
+
+            <div>
+                <label>High Blood Pressure</label>
+                <select name="HighBP">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div>
+                <label>High Cholesterol</label>
+                <select name="HighChol">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Smoking Habit</label>
+                <select name="Smoker">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Unhealthy Days (0–30)</label>
+                <input type="number" min="0" max="30" name="PhysHlth" required>
+                <small>Days you felt physically unwell last month</small>
+            </div>
+        </div>
+
+        <button type="submit">Check Risk</button>
+    </form>
+
+    {% if probability %}
+    <div class="result-card">
+        <h2>🧪 Prediction Result</h2>
+
+        <div class="progress">
+            <div class="progress-bar" style="width: {{ probability*100 }}%;"></div>
+        </div>
+
+        <p class="percent">{{ (probability*100)|round(2) }}% Probability</p>
+
+        <span class="badge
+            {% if 'High' in risk %}high
+            {% elif 'Moderate' in risk %}moderate
+            {% else %}low{% endif %}">
+            {{ risk }}
+        </span>
+
+        <div class="tips">
+            <h4>💡 Health Tips</h4>
+            {% if 'High' in risk %}
+                <p>Consult a doctor, reduce sugar intake, exercise regularly.</p>
+            {% elif 'Moderate' in risk %}
+                <p>Maintain a healthy diet and increase physical activity.</p>
+            {% else %}
+                <p>Continue healthy habits and regular checkups.</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

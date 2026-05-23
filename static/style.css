@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #dbeafe, #f0f9ff);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    width: 440px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #1e3a8a;
+}
+
+.subtitle {
+    text-align: center;
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+small {
+    font-size: 11px;
+    color: #666;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e40af;
+}
+
+.result-card {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 14px;
+    background: #f8fafc;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.progress {
+    width: 100%;
+    height: 14px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #22c55e, #ef4444);
+}
+
+.percent {
+    font-weight: bold;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.badge.low { background: #22c55e; }
+.badge.moderate { background: #f59e0b; }
+.badge.high { background: #ef4444; }
+
+.tips {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
